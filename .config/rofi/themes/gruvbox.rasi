@@ -1,0 +1,207 @@
+/**
+ * Gruvbox Drun — minimalista
+ * Layout: imagepanel (izquierda) + menú 2 columnas (derecha)
+ *
+ * Uso:
+ *   rofi -show drun -theme ~/.config/rofi/themes/gruvbox-drun.rasi
+ *
+ * Imagen del panel:
+ *   Cambia la ruta en imagepanel { background-image: ... }
+ *   Escalado: width | height | both | none
+ *
+ * ── Qué acepta rofi .rasi ────────────────────────────────────────────────
+ *  Colores:    #RRGGBB  #AARRGGBB  rgba(r,g,b,a)  argb:AARRGGBB
+ *  Tamaños:    px  em  %  (NO rem, vw, vh)
+ *  border:     solo distancias — "1px" o "1px 2px 3px 4px"
+ *              NUNCA "1px solid color" (el keyword solid mata rofi)
+ *  border-color es una propiedad separada de border
+ *  cursor:     default | pointer | text  (NO inherit)
+ *  text-color: color explícito  (NO inherit)
+ *  background-image: url("ruta", width|height|both|none)
+ *
+ * ── Qué NO existe en rofi ────────────────────────────────────────────────
+ *  layout:         (en listview)
+ *  fixed-columns:
+ *  box-shadow, transition, animation, filter, transform
+ *  gradientes CSS
+ * ─────────────────────────────────────────────────────────────────────────
+ */
+
+/* ── Paleta Gruvbox ─────────────────────────────────────────────────────── */
+* {
+    bg:      #282828;
+    bg-alt:  #3c3836;
+    bg-hl:   #504945;
+
+    fg:      #ebdbb2;
+    fg-dim:  #a89984;
+    fg-sub:  #7c6f64;
+
+    yellow:  #fabd2f;
+    green:   #b8bb26;
+    red:     #fb4934;
+
+    background-color: transparent;
+    text-color:       @fg;
+    border-color:     @bg-hl;
+}
+
+/* ── Ventana ────────────────────────────────────────────────────────────── */
+window {
+    background-color: @bg;
+    border:           1px;
+    border-color:     @bg-hl;
+    border-radius:    8px;
+    width:            860px;
+    height:           520px;
+    orientation:      horizontal;
+    children:         [ imagepanel, mainbox ];
+}
+
+/* ── Panel de imagen ────────────────────────────────────────────────────── */
+/*
+ * Contenedor vacío — acepta background-image, background-color,
+ * width, expand, padding, border, border-radius, cursor.
+ * NO acepta children ni propiedades de texto.
+ *
+ * "both" escala la imagen para cubrir todo el panel (puede distorsionar).
+ * Usa "width" o "height" si prefieres mantener proporciones.
+ */
+imagepanel {
+    expand:           false;
+    width:            260px;
+    background-image: url("~/.config/rofi/themes/wallpaper.png", both);
+    background-color: @bg-alt;
+}
+
+/* ── Caja principal ─────────────────────────────────────────────────────── */
+mainbox {
+    background-color: transparent;
+    orientation:      vertical;
+    children:         [ inputbar, listview, message ];
+    padding:          14px;
+    spacing:          8px;
+}
+
+/* ── Barra de búsqueda (minimalista) ────────────────────────────────────── */
+inputbar {
+    background-color: transparent;
+    padding:          4px 0px;
+    spacing:          8px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @fg-sub;
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @fg;
+    cursor:           text;
+    placeholder:      "buscar…";
+    placeholder-color: @fg-sub;
+}
+
+/* ── Lista de aplicaciones (2 columnas) ─────────────────────────────────── */
+listview {
+    background-color: transparent;
+    columns:          2;
+    lines:            5;
+    spacing:          2px;
+    cycle:            true;
+    dynamic:          true;
+    scrollbar:        false;
+    fixed-height:     true;
+    reverse:          false;
+}
+
+/* ── Elemento ───────────────────────────────────────────────────────────── */
+element {
+    background-color: transparent;
+    text-color:       @fg-dim;
+    border-radius:    4px;
+    padding:          7px 8px;
+    orientation:      horizontal;
+    spacing:          8px;
+    cursor:           pointer;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @fg-dim;
+}
+
+element normal.urgent {
+    background-color: transparent;
+    text-color:       @red;
+}
+
+element normal.active {
+    background-color: transparent;
+    text-color:       @green;
+}
+
+element selected.normal {
+    background-color: @bg-hl;
+    text-color:       @fg;
+    border:           0px 0px 0px 2px;
+    border-color:     @yellow;
+}
+
+element selected.urgent {
+    background-color: @bg-hl;
+    text-color:       @red;
+}
+
+element selected.active {
+    background-color: @bg-hl;
+    text-color:       @green;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg-dim;
+}
+
+element alternate.urgent {
+    background-color: transparent;
+    text-color:       @red;
+}
+
+element alternate.active {
+    background-color: transparent;
+    text-color:       @green;
+}
+
+/* ── Icono ──────────────────────────────────────────────────────────────── */
+element-icon {
+    background-color: transparent;
+    size:             22px;
+    vertical-align:   0.5;
+    cursor:           pointer;
+}
+
+/* ── Texto del elemento ─────────────────────────────────────────────────── */
+element-text {
+    background-color: transparent;
+    text-color:       @fg-dim;
+    vertical-align:   0.5;
+    highlight:        @yellow;
+    cursor:           pointer;
+}
+
+/* ── Mensaje / sin resultados ───────────────────────────────────────────── */
+message {
+    background-color: transparent;
+    padding:          4px 0px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @fg-sub;
+    vertical-align:   0.5;
+    horizontal-align: 0.0;
+}
+

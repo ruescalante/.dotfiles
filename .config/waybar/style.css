@@ -1,0 +1,189 @@
+/* ─────────────────────────────────────────────────────
+   Waybar — Gruvbox Dark · Monochrome Minimal
+   ───────────────────────────────────────────────────── */
+ 
+@define-color bg     #282828;
+@define-color bg1    #3c3836;
+@define-color bg2    #504945;
+@define-color fg     #ebdbb2;
+@define-color fg2    #a89984;
+@define-color muted  #665c54;
+@define-color alert  #fb4934;
+ 
+* {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 20px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+ 
+/* ── Bar ─────────────────────────────────────────── */
+window#waybar {
+    background: transparent;
+    color: @fg2;
+}
+ 
+/* ── Secciones izquierda y derecha: píldora ──────── */
+.modules-left,
+.modules-right {
+    background: @bg;
+    border-radius: 8px;
+    padding: 0 2px;
+    border: 1px solid @bg2;
+}
+ 
+/* Centro: sin fondo — mpris es su propia píldora    */
+.modules-center {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+ 
+/* ── Módulo base ─────────────────────────────────── */
+#workspaces,
+#window,
+#custom-swaync,
+#pulseaudio,
+#network,
+#battery,
+#clock,
+#tray {
+    background: transparent;
+    color: @fg2;
+    padding: 0 8px;
+}
+ 
+/* ── MPRIS: píldora propia ───────────────────────── */
+#mpris {
+    background: @bg;
+    border: 1px solid @bg2;
+    border-radius: 8px;
+    color: @fg;
+    padding: 0 12px;
+    margin: 4px 0;
+}
+ 
+#mpris.paused {
+    color: @fg2;
+}
+ 
+#mpris.stopped {
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    font-size: 0;
+}
+ 
+/* ── Workspaces ──────────────────────────────────── */
+#workspaces {
+    padding: 0 3px;
+}
+ 
+#workspaces button {
+    background: transparent;
+    color: @muted;
+    padding: 0 5px;
+    margin: 0 1px;
+    border-radius: 4px;
+    min-width: 0;
+    box-shadow: none;
+    transition: color 0.1s;
+}
+ 
+#workspaces button:hover {
+    color: @fg;
+    background: @bg1;
+}
+ 
+#workspaces button.active {
+    color: @fg;
+    font-weight: bold;
+}
+ 
+#workspaces button.urgent {
+    color: @alert;
+}
+ 
+/* ── Ventana activa ──────────────────────────────── */
+#window {
+    color: @muted;
+    font-style: italic;
+    padding-left: 4px;
+}
+ 
+/* ── SwayNC ──────────────────────────────────────── */
+/* Solo muestra el icono — sin texto, sin caja vacía */
+#custom-swaync {
+    color: @muted;
+    padding: 0 9px;
+    
+}
+ 
+#custom-swaync.notification,
+#custom-swaync.inhibited-notification {
+    color: @fg;
+}
+ 
+#custom-swaync.dnd-none,
+#custom-swaync.dnd-notification,
+#custom-swaync.dnd-inhibited-none,
+#custom-swaync.dnd-inhibited-notification {
+    color: @muted;
+}
+ 
+/* ── Pulseaudio — icono más grande ───────────────── */
+#pulseaudio {
+    font-size: 20px;
+}
+ 
+#pulseaudio.muted {
+    color: @muted;
+}
+ 
+/* ── Batería ─────────────────────────────────────── */
+#battery.charging,
+#battery.plugged {
+    color: @fg;
+}
+ 
+#battery.critical {
+    color: @alert;
+    animation: blink 1s steps(1) infinite alternate;
+}
+ 
+#battery.charging.critical {
+    color: @fg;
+    animation: none;
+}
+ 
+@keyframes blink {
+    to { opacity: 0.35; }
+}
+ 
+/* ── Tray ────────────────────────────────────────── */
+#tray {
+    padding: 0 4px;
+    min-width: 0;
+}
+ 
+#tray > .passive         { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+ 
+/* ── Tooltip ─────────────────────────────────────── */
+tooltip {
+    background: @bg;
+    border: 1px solid @bg2;
+    border-radius: 6px;
+    color: @fg2;
+    padding: 4px 8px;
+}
+ 
+tooltip label {
+    color: @fg2;
+}

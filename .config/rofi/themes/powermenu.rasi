@@ -1,0 +1,142 @@
+/**
+ * Gruvbox Powermenu
+ * Pantalla completa con overlay transparente, 3 botones centrados.
+ *
+ * Requiere compositor (picom, sway, hyprland, etc.) para la transparencia.
+ * Los íconos se cargan desde el tema del sistema (Papirus recomendado).
+ *
+ * Lanzar con:
+ *   ~/.config/rofi/scripts/powermenu.sh
+ *
+ * ── Sintaxis rofi recordatorio ───────────────────────────────────────────
+ *  border: solo px — NUNCA "1px solid color"
+ *  border-color: propiedad separada
+ *  cursor: default | pointer | text
+ *  rgba(r, g, b, a)  — a entre 0.0 y 1.0
+ *  NO: inherit, layout:, fixed-columns:, gradientes CSS
+ * ─────────────────────────────────────────────────────────────────────────
+ */
+
+* {
+    bg:        rgba(40, 40, 40, 0.92);
+    bg-btn:    rgba(60, 56, 54, 0.55);
+    bg-sel:    rgba(80, 73, 69, 0.80);
+
+    fg:        #ebdbb2;
+    fg-dim:    #a89984;
+    fg-sub:    #7c6f64;
+
+    yellow:    #fabd2f;
+    red:       #fb4934;
+    green:     #b8bb26;
+    blue:      #83a598;
+
+    background-color: transparent;
+    text-color:       @fg;
+    border-color:     transparent;
+}
+
+/* ── Ventana pantalla completa ──────────────────────────────────────────── */
+window {
+    fullscreen:       true;
+    background-color: @bg;
+    children:         [ mainbox ];
+}
+
+/* ── Caja central ───────────────────────────────────────────────────────── */
+/*
+ * El padding vertical centra el listview en la pantalla.
+ * Ajusta el % si usas una resolución muy diferente a 1080p.
+ */
+mainbox {
+    background-color: transparent;
+    children:         [ listview ];
+    padding:          28% 18%;
+    spacing:          0px;
+}
+
+/* ── Los 3 botones en fila ──────────────────────────────────────────────── */
+listview {
+    background-color: transparent;
+    columns:          3;
+    lines:            1;
+    spacing:          20px;
+    fixed-height:     false;
+    scrollbar:        false;
+    dynamic:          false;
+    cycle:            true;
+}
+
+/* ── Botón base ─────────────────────────────────────────────────────────── */
+element {
+    background-color: @bg-btn;
+    text-color:       @fg-dim;
+    border-radius:    10px;
+    padding:          36px 10px;
+    orientation:      vertical;
+    cursor:           pointer;
+    border:           1px;
+    border-color:     rgba(80, 73, 69, 0.40);
+    spacing:          12px;
+}
+
+element normal.normal {
+    background-color: @bg-btn;
+    text-color:       @fg-dim;
+    border-color:     rgba(80, 73, 69, 0.40);
+}
+
+/* Apagar — resalta en rojo al seleccionar */
+element normal.urgent {
+    background-color: @bg-btn;
+    text-color:       @fg-dim;
+    border-color:     rgba(80, 73, 69, 0.40);
+}
+
+element selected.normal {
+    background-color: @bg-sel;
+    text-color:       @fg;
+    border:           1px;
+    border-color:     @yellow;
+}
+
+element selected.urgent {
+    background-color: rgba(251, 73, 52, 0.20);
+    text-color:       @red;
+    border:           1px;
+    border-color:     @red;
+}
+
+element alternate.normal {
+    background-color: @bg-btn;
+    text-color:       @fg-dim;
+    border-color:     rgba(80, 73, 69, 0.40);
+}
+
+/* ── Ícono (viene del tema del sistema vía -show-icons) ─────────────────── */
+element-icon {
+    background-color: transparent;
+    size:             52px;
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    cursor:           pointer;
+}
+
+/* ── Etiqueta del botón ─────────────────────────────────────────────────── */
+element-text {
+    background-color: transparent;
+    text-color:       @fg-dim;
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    font:             "Sans 13";
+    highlight:        none;
+    cursor:           pointer;
+}
+
+element selected.normal element-text {
+    text-color: @fg;
+}
+
+element selected.urgent element-text {
+    text-color: @red;
+}
