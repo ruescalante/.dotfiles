@@ -101,7 +101,7 @@ window#waybar {
     background: @bg1;
 }
  
-#workspaces button.active {
+#workspaces button.focused {
     color: @fg;
     font-weight: bold;
 }

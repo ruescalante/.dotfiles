@@ -8,8 +8,8 @@
     "margin-right": 12,
 
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/window"
+        "sway/workspaces",
+        "sway/window"
     ],
 
     "modules-center": [
@@ -26,22 +26,22 @@
     ],
 
     // ── Workspaces ──────────────────────────────────────────────────────────
-    "hyprland/workspaces": {
+    "sway/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
-        "sort-by-number": true,
+	"disable-scroll": false,
+        "all-outputs": true,
         "format-icons": {
             "1": "󰎤", "2": "󰎧", "3": "󰎪", "4": "󰎭", "5": "󰎱",
-            "urgent": "󰀧", "active": "󰮯", "default": "󰊠"
+            "urgent": "󰀧", "focused": "󰮯", "default": "󰊠"
         },
-        "persistent-workspaces": { "*": 5 }
+        "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [], "5": [] }
     },
 
     // ── Active Window ───────────────────────────────────────────────────────
-    "hyprland/window": {
+    "sway/window": {
         "format": "{title}",
         "max-length": 40,
-        "separate-outputs": true,
         "rewrite": {
             "(.*) — Mozilla Firefox": "󰈹 $1",
             "(.*)kitty":             " terminal",
