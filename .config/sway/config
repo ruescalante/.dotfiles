@@ -21,6 +21,7 @@ set $term foot
 set $menu rofi -show drun -theme ~/.config/rofi/themes/gruvbox.rasi
 bindsym $mod+Shift+p exec ~/.config/rofi/scripts/powermenu.sh
 exec waybar
+bindsym Print exec ~/.scripts/screenshot.sh
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -56,9 +57,9 @@ output * bg /home/ruben/.config/sway/wallpaper/joyboy.png fill
        middle_emulation enabled
    }
 #
-#   input type:keyboard {
-#       xkb_layout "eu"
-#   }
+   input type:keyboard {
+       xkb_layout "latam"
+   }
 #
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
@@ -221,7 +222,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
+   
 
 #
 # Status Bar:

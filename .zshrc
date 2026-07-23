@@ -82,8 +82,8 @@ export PATH="$HOME/.local/bin:$HOME/.dotnet/tools:$JAVA_HOME/bin:$PATH"
 
 # 3. Aseguramos las rutas base de Arch (opcional pero recomendado)
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:$PATH"
-
-
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$(go env GOPATH)/bin"
 #export PATH="/usr/local/bin:/usr/bin:/bin:$PATH"
 #export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:$PATH
 #export JAVA_HOME=$HOME/.java/jdk/jdk-21.0.6+7
@@ -125,3 +125,11 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 # Added by Antigravity CLI installer
 export PATH="/home/ruben/.local/bin:$PATH"
+
+# fnm
+FNM_PATH="/home/ruben/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
+export PATH="$PATH:$HOME/.dotnet/tools"

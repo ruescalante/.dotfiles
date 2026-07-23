@@ -29,7 +29,7 @@
     "sway/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
-	"disable-scroll": false,
+	"disable-scroll": true,
         "all-outputs": true,
         "format-icons": {
             "1": "󰎤", "2": "󰎧", "3": "󰎪", "4": "󰎭", "5": "󰎱",
