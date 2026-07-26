@@ -45,7 +45,8 @@ window#waybar {
 /* ── Módulo base ─────────────────────────────────── */
 #workspaces,
 #window,
-#custom-swaync,
+#custom-powermenu,
+#custom-notification,
 #pulseaudio,
 #network,
 #battery,
@@ -117,24 +118,25 @@ window#waybar {
     padding-left: 4px;
 }
  
-/* ── SwayNC ──────────────────────────────────────── */
-/* Solo muestra el icono — sin texto, sin caja vacía */
-#custom-swaync {
-    color: @muted;
+/* ── Powermenu y Notificaciones ───────────────────── */
+#custom-powermenu,
+#custom-notification {
+    background: transparent;
+    color: @fg2;
     padding: 0 9px;
-    
+    transition: color 0.15s ease, background-color 0.15s ease;
 }
- 
-#custom-swaync.notification,
-#custom-swaync.inhibited-notification {
+
+#custom-notification:hover {
     color: @fg;
+    background: @bg1;
+    border-radius: 4px;
 }
- 
-#custom-swaync.dnd-none,
-#custom-swaync.dnd-notification,
-#custom-swaync.dnd-inhibited-none,
-#custom-swaync.dnd-inhibited-notification {
-    color: @muted;
+
+#custom-powermenu:hover {
+    color: @alert;
+    background: @bg1;
+    border-radius: 4px;
 }
  
 /* ── Pulseaudio — icono más grande ───────────────── */

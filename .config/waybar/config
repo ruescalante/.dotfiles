@@ -17,11 +17,12 @@
     ],
 
     "modules-right": [
-        "custom/swaync",
         "pulseaudio",
         "network",
         "battery",
         "clock",
+        "custom/notification",
+        "custom/powermenu",
         "tray"
     ],
 
@@ -82,31 +83,20 @@
         "on-scroll-down":  "playerctl volume 0.05-"
     },
 
-    // ── SwayNC — Notificaciones ─────────────────────────────────────────────
-    // swaync-client -swb: modo subscribe, emite JSON en cada cambio
-    //   {text}  = número de notificaciones pendientes
-    //   {alt}   = clase: "none" | "notification" | "dnd-none" | "dnd-notification"
-    // Clic izq   → abrir/cerrar panel de notificaciones
-    // Clic der   → toggle modo "no molestar"
-    "custom/swaync": {
-        "tooltip": false,
-        "format": "{icon}",
-        "format-icons": {
-            "none":                 "󰂜",
-            "notification":         "󰂚",
-            "dnd-none":             "󰂛",
-            "dnd-notification":     "󰂛",
-            "inhibited-none":       "󰂜",
-            "inhibited-notification":"󰂚",
-            "dnd-inhibited-none":   "󰂛",
-            "dnd-inhibited-notification":"󰂛"
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click":       "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
+    // ── Powermenu ────────────────────────────────────────────────────────────
+    "custom/powermenu": {
+        "format": "󰐥",
+        "tooltip": true,
+        "tooltip-format": "Menú de Apagado",
+        "on-click": "/home/ruben/.config/rofi/scripts/powermenu.sh"
+    },
+
+    // ── Notificaciones ───────────────────────────────────────────────────────
+    "custom/notification": {
+        "format": "󰂚",
+        "tooltip": true,
+        "tooltip-format": "Notificaciones",
+        "on-click": "/home/ruben/.config/rofi/scripts/notifications.sh"
     },
 
     // ── Audio ───────────────────────────────────────────────────────────────
