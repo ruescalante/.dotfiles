@@ -1,0 +1,170 @@
+/**
+ * Gruvbox Notifications Theme — Rofi
+ * Configuración optimizada para el historial de notificaciones con miniaturas grandes
+ */
+
+* {
+    /* Paleta Gruvbox Dark */
+    bg:            #282828;
+    bg-alt:        #3c3836;
+    bg-hl:         #504945;
+
+    fg:            #ebdbb2;
+    fg-dim:        #a89984;
+    fg-sub:        #7c6f64;
+
+    yellow:        #fabd2f;
+    orange:        #fe8019;
+    green:         #b8bb26;
+    red:           #fb4934;
+    blue:          #83a598;
+
+    background-color: transparent;
+    text-color:       @fg;
+    border-color:     @bg-hl;
+    font:             "GeistMono Nerd Font 10.5";
+}
+
+/* ── Ventana Principal ─────────────────────────────────────────────────── */
+window {
+    background-color: @bg;
+    border:           1px;
+    border-color:     @bg-hl;
+    border-radius:    12px;
+    width:            840px;
+    anchor:           center;
+    location:         center;
+    children:         [ mainbox ];
+}
+
+/* ── Contenedor Principal ───────────────────────────────────────────────── */
+mainbox {
+    background-color: transparent;
+    orientation:      vertical;
+    children:         [ inputbar, listview, message ];
+    padding:          16px;
+    spacing:          12px;
+}
+
+/* ── Barra de Búsqueda y Título ─────────────────────────────────────────── */
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    8px;
+    padding:          10px 14px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @yellow;
+    font:             "GeistMono Nerd Font Bold 11";
+}
+
+entry {
+    background-color:  transparent;
+    text-color:        @fg;
+    cursor:            text;
+    placeholder:       "Filtrar notificaciones...";
+    placeholder-color: @fg-sub;
+}
+
+/* ── Lista de Notificaciones ────────────────────────────────────────────── */
+listview {
+    background-color: transparent;
+    columns:          1;
+    lines:            5;
+    spacing:          8px;
+    cycle:            true;
+    dynamic:          true;
+    scrollbar:        false;
+    fixed-height:     false;
+}
+
+/* ── Elemento / Tarjeta de Notificación ──────────────────────────────────── */
+element {
+    background-color: @bg-alt;
+    text-color:       @fg-dim;
+    border-radius:    10px;
+    padding:          10px 14px;
+    orientation:      horizontal;
+    children:         [ element-icon, element-text ];
+    spacing:          16px;
+    cursor:           pointer;
+    border:           1px;
+    border-color:     rgba(80, 73, 69, 0.40);
+    expand:           true;
+}
+
+element normal.normal {
+    background-color: @bg-alt;
+    text-color:       @fg-dim;
+}
+
+element normal.urgent {
+    background-color: @bg-alt;
+    text-color:       @red;
+    border-color:     @red;
+}
+
+element normal.active {
+    background-color: @bg-alt;
+    text-color:       @green;
+}
+
+element selected.normal {
+    background-color: @bg-hl;
+    text-color:       @fg;
+    border:           1px;
+    border-color:     @yellow;
+}
+
+element selected.urgent {
+    background-color: @bg-hl;
+    text-color:       @red;
+    border-color:     @red;
+}
+
+element selected.active {
+    background-color: @bg-hl;
+    text-color:       @green;
+    border-color:     @green;
+}
+
+/* ── Miniatura / Ícono Grande (Alineado a la Izquierda) ─────────────────── */
+element-icon {
+    background-color: transparent;
+    size:             64px;
+    vertical-align:   0.5;
+    horizontal-align: 0.5;
+    cursor:           pointer;
+    expand:           false;
+}
+
+/* ── Bloque de Texto (Pango Markup a la Derecha en la misma fila) ────────── */
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+    horizontal-align: 0.0;
+    highlight:        bold #fabd2f;
+    cursor:           pointer;
+    markup:           true;
+    expand:           true;
+}
+
+/* ── Barra Inferior de Ayuda / Estado ────────────────────────────────────── */
+message {
+    background-color: transparent;
+    padding:          4px 0px 0px 0px;
+    border:           1px 0px 0px 0px;
+    border-color:     @bg-hl;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @fg-sub;
+    font:             "GeistMono Nerd Font 9.5";
+    vertical-align:   0.5;
+    horizontal-align: 0.0;
+}
