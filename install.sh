@@ -22,6 +22,7 @@ links=(
   ".config/mako"
   ".config/rofi"
   ".config/sway"
+  ".config/swaylock"
   ".config/Thunar"
   ".config/waybar"
   ".local/share/fonts"
@@ -40,6 +41,7 @@ arch_packages=(
   neovim
   vim
   sway
+  swaylock
   swaybg
   waybar
   mako
@@ -47,6 +49,7 @@ arch_packages=(
   foot
   grim
   slurp
+  ffmpeg
   wl-clipboard
   thunar
   tumbler

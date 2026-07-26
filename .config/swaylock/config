@@ -1,0 +1,46 @@
+# Swaylock Minimalist Configuration (Gruvbox Theme)
+# Location: ~/.config/swaylock/config -> ~/.dotfiles/.config/swaylock/config
+
+# General options
+ignore-empty-password
+font="Noto Sans"
+font-size=16
+
+# Disable extra clutter
+disable-caps-lock-text
+hide-keyboard-layout
+
+# Default background color (Translucent dark overlay if image is not provided)
+color=28282880
+
+# Indicator dimensions (Círculo 1.5x más grande)
+indicator-radius=150
+indicator-thickness=8
+indicator-idle-visible
+
+# Inside ring colors (100% Transparent inside)
+inside-color=00000000
+inside-clear-color=00000000
+inside-caps-lock-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+
+# Ring border colors (Gruvbox Dark Palette)
+ring-color=ebdbb2
+ring-clear-color=fe8019
+ring-caps-lock-color=fabd2f
+ring-ver-color=83a598
+ring-wrong-color=fb4934
+
+# Keypress & backspace highlight colors (Gruvbox Green & Red)
+key-hl-color=b8bb26
+bs-hl-color=fb4934
+separator-color=00000000
+line-uses-inside
+
+# Text colors inside indicator
+text-color=ebdbb2
+text-clear-color=fe8019
+text-caps-lock-color=fabd2f
+text-ver-color=83a598
+text-wrong-color=fb4934
