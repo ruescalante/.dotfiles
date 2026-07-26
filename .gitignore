@@ -1,0 +1,2 @@
+# Ignore backups created by dotfiles installer
+*.bak.*

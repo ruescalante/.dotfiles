@@ -101,35 +101,17 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 eval "$(zoxide init --cmd cd zsh)"
 
 # fnm
-FNM_PATH="/home/ruben/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
-
-# fnm
-FNM_PATH="/home/ruben/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "$(fnm env --shell zsh)"
 fi
 
-# bun completions
-[ -s "/home/ruben/.bun/_bun" ] && source "/home/ruben/.bun/_bun"
-
-# bun
+# bun completions & bun
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
+export PATH="$HOME/.local/bin:$HOME/.dotnet/tools:$PATH"
 
-# Added by Antigravity CLI installer
-export PATH="/home/ruben/.local/bin:$PATH"
-
-# fnm
-FNM_PATH="/home/ruben/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env --shell zsh)"
-fi
-export PATH="$PATH:$HOME/.dotnet/tools"
