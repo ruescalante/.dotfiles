@@ -28,8 +28,10 @@ CHOSEN=$(printf "%b" "$ENTRIES" | rofi \
 # ── Acciones de Sistema ───────────────────────────────────────────────────────
 case "$CHOSEN" in
     "Bloquear")
-        if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-            loginctl lock-session
+        if [ -x "$HOME/.scripts/lock.sh" ]; then
+            "$HOME/.scripts/lock.sh"
+        elif command -v swaylock >/dev/null 2>&1; then
+            swaylock
         else
             i3lock -c 282828
         fi
